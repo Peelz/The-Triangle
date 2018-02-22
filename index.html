@@ -20,16 +20,16 @@
                     <div class="inline field">
                         <label for="side2"> ด้านที่ 2: </label>
                         <input type="text" name="side2" id="side2" min="1" required onkeypress='onSidePress()' maxlength="4" >
-                    </div>
+                    </div>       
                     <div class="inline field">
-                        <label for="tri"></label>
-                        <input type="text" name="side3" id="side3" min="1" required onkeypress='onSidePress()' maxlength="4" >
-                    </div>        
+                        <label for="resultText"> ประเภท: </label>
+                        <select name="triangle_type" id="triType">
+                            <option value="">ประเภทของสามเหลี่ยม</option>
+                        </select>
+                    </div> 
                     <div class="inline field">
                         <label for="resultText"> ผลลัพธ์: </label>
-                        <select name="triangle_type" id="triType">
-
-                        </select>
+                        
                     </div>     
                     <div class="inline field">
                         <input type=button value="Submit" onClick="result()"/>  
@@ -54,10 +54,6 @@
                             .attr("value",key)
                             .text(value)); 
         });
-        function onSidePress(){
-            // return event.charCode >= 48 && event.charCode <= 57
-        }
-
         $('input').keypress(function(event){
             // console.log($(this).val()) ;
             if ($(this).val() == "" ){
@@ -80,36 +76,19 @@
 
         function result(){
             var resultText ="" ;
-            // var side1 = parseInt($('#side1').val()) ;
+            // var side1 = parseInt($('#side1').val()) s;
             // var side2 = parseInt($('#side2').val()) ;
             // var side3 = parseInt($('#side3').val()) ;
             var side1 = $('#side1').val() ;
             var side2 = $('#side2').val() ;
             var type = $('#triType').val() ;
-
+            
+            console.log(type);
             
             $("#resultText").val(resultText);
 
 
         }
-
-        
-
-        function isTriangle(sides){
-            var sum = 0 ;
-            for (var i= 0; i < sides.length; i++){
-                sum = sides[i]+sum ;
-            }
-            var max = Math.max.apply(Math,sides) ;
-            if(sum - max > max){
-                return true;
-            }
-            else{
-                return false ;
-            }
-        }
-
-
 
 
     </script>
