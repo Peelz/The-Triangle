@@ -16,11 +16,11 @@
                   <h4 class="ui dividing header">สามเหลี่ยมอะไร ?</h4>
                     <div class="inline field">
                         <label for="side1"> ด้านที่ 1: </label>
-                        <input type="text" name="side1" id="side1" min="1" required onkeypress='onSidePress()' maxlength="4">
+                        <input type="text" name="side1" id="side1" min="1" required  maxlength="4">
                     </div>
                     <div class="inline field">
                         <label for="side2"> ด้านที่ 2: </label>
-                        <input type="text" name="side2" id="side2" min="1" required onkeypress='onSidePress()' maxlength="4" >
+                        <input type="text" name="side2" id="side2" min="1" required  maxlength="4" >
                     </div>       
                     <div class="inline field">
                         <label for="resultText"> ประเภท: </label>
@@ -30,11 +30,11 @@
                     </div> 
                     <div class="inline field">
                         <label for="resultText"> ผลลัพธ์: </label>
-                        <input id="displayResult" type="text" disabled>
+                        <input id="resultText" type="text" disabled>
                         
                     </div>     
                     <div class="inline field">
-                        <input type=button value="Submit" onClick="result()"/>  
+                        <input id="submit" type=button value="Submit"/>  
                         <input type="reset" name="reset" value=" Reset "/>
                         <input type='button' onClick="closeWindow()" value='Close'/>
                     </div>
@@ -72,9 +72,13 @@
             self.opener=this; self.close();  
         }
 
+        function displayResult(result){
+            $("#resultText").val(result);
+        }
 
 
-        function result(){
+
+        $('#submit').click(function(){
             var result ="" ;
             var side1 = $('#side1').val() ;
             var side2 = $('#side2').val() ;
@@ -96,12 +100,9 @@
             {
                 result =  scaleneTriangle(side1,side2)
             }
-
-
-
             displayResult(result);    
             
-        }
+        });
 
        
 
