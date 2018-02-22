@@ -48,8 +48,12 @@
             'สามเหลี่ยมหน้าจั่ว',
             'สามเหลี่ยมด้านไม่เท่า',
         ]
-        $('#triType')
-
+        $.each(tri_name, function(key, value) {   
+            $('#triType')
+                .append($("<option></option>")
+                            .attr("value",key)
+                            .text(value)); 
+        });
         function onSidePress(){
             // return event.charCode >= 48 && event.charCode <= 57
         }
@@ -70,55 +74,9 @@
             self.opener=this; self.close();  
         }
 
+        function displayResult( result) {
         
-		function isUint8(n) {
-    		return +n === n && !(n % 1) && n < 0x100 && n >= 0;
-		}
-		function isInt(n) {
-   			return n % 1 === 0;
-		}
-
-        function isFloat(side){
-            if (side % 1 == 0){
-                return false ;
-            } else {
-                return true ;
-            }
-        }
-
-    	function isNumberic(param)
-        {
-			$.each(param, function(index, value)
-            {
-            	// console.log(value);
-
-				if( !$.isNumeric(value))
-                {   
-                    alert("กรุณากรอกข้อมูลใหม่");
-					return false ;
-				}
-
-                if( value <= 0  )
-                {
-                    alert("กรุณากรอกจำนวนเต็มบวก");
-                    return false ;
-                }
-                
-                if( value >9999  )
-                {
-                    alert("กรุณากรอกจำนวนเต็มบวกไม่เกินสี่หลัก");
-                    return false ;
-                }
-
-                if ( isFloat(value) ){
-                    alert("กรุณากรอกเฉพาะจำนวนเต็ม");
-                    // console.log("float");
-                    return false;
-                }
-                
-				return true;
-			});
-    	}
+        };
 
         function result(){
             var resultText ="" ;
@@ -127,39 +85,15 @@
             // var side3 = parseInt($('#side3').val()) ;
             var side1 = $('#side1').val() ;
             var side2 = $('#side2').val() ;
-            var side3 = $('#side3').val() ;
-            var sides  = [side1,side2,side3];
+            var type = $('#triType').val() ;
 
-            if( isNumberic(sides) == false ){
-            	var resultText ="" ;
-            	
-            }
-            else if ( isTriangle(sides)){
-                sides = sides.sort(function(a, b){return a-b}) ;
-                var longest = sides.pop() ;
-
-                if(longest == Math.sqrt(Math.pow(sides[0],2)+Math.pow(sides[1],2))) {
-                    resultText = "สามเหลี่ยมมุมฉาก" ;                
-                }
-                else if(side1 == side2 && side2 == side3){
-                    resultText = "สามเหลี่ยมด้านเท่า" ;
-                }
-                else if( side1 == side2 || side2 == side3 || side3 == side1){
-                    resultText = "สามเหลี่ยมหน้าจั่ว" ;
-                }
-                else{
-                    resultText = "สามเหลี่ยมด้านไม่เท่า" ;
-                }
-            }
-            else{
-                resultText = "ไม่เป็นสามเหลี่ยม" ;  
-
-            }
             
             $("#resultText").val(resultText);
 
 
         }
+
+        
 
         function isTriangle(sides){
             var sum = 0 ;
