@@ -14,20 +14,22 @@
                 <form class="ui form">  
                   <h4 class="ui dividing header">สามเหลี่ยมอะไร ?</h4>
                     <div class="inline field">
-                        <label for="side1"> ด้านที่  A: </label>
+                        <label for="side1"> ด้านที่ 1: </label>
                         <input type="text" name="side1" id="side1" min="1" required onkeypress='onSidePress()' maxlength="4">
                     </div>
                     <div class="inline field">
-                        <label for="side2"> ด้านที่ B: </label>
+                        <label for="side2"> ด้านที่ 2: </label>
                         <input type="text" name="side2" id="side2" min="1" required onkeypress='onSidePress()' maxlength="4" >
                     </div>
                     <div class="inline field">
-                        <label for="side3"> ด้านที่ C: </label>
+                        <label for="tri"></label>
                         <input type="text" name="side3" id="side3" min="1" required onkeypress='onSidePress()' maxlength="4" >
                     </div>        
                     <div class="inline field">
                         <label for="resultText"> ผลลัพธ์: </label>
-                        <input id="resultText" type="text" disabled style="">
+                        <select name="triangle_type" id="triType">
+
+                        </select>
                     </div>     
                     <div class="inline field">
                         <input type=button value="Submit" onClick="result()"/>  
@@ -40,6 +42,13 @@
     </div> 
 
     <script type="text/javascript">
+        var tri_name = [
+            'สามเหลี่ยมมุมฉาก',
+            'สามเหลี่ยมด้านเท่า',
+            'สามเหลี่ยมหน้าจั่ว',
+            'สามเหลี่ยมด้านไม่เท่า',
+        ]
+        $('#triType')
 
         function onSidePress(){
             // return event.charCode >= 48 && event.charCode <= 57
@@ -120,7 +129,7 @@
             var side2 = $('#side2').val() ;
             var side3 = $('#side3').val() ;
             var sides  = [side1,side2,side3];
-           
+
             if( isNumberic(sides) == false ){
             	var resultText ="" ;
             	
