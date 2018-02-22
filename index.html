@@ -29,6 +29,7 @@
                     </div> 
                     <div class="inline field">
                         <label for="resultText"> ผลลัพธ์: </label>
+                        <input id="displayResult" type="text" disabled>
                         
                     </div>     
                     <div class="inline field">
@@ -71,12 +72,8 @@
         }
 
         function displayResult( result) {
-            $('#displayResult').val(results);
+            $('#displayResult').val(result);
         };
-
-
-
-       
 
         function result(){
             var resultText ="" ;
@@ -86,15 +83,10 @@
             var side1 = $('#side1').val() ;
             var side2 = $('#side2').val() ;
             var type = $('#triType').val() ;
-            
-            console.log(type);
-            
+            // console.log(type);
+            displayResult(type);    
             $("#resultText").val(resultText);
-
             var sides  = [side1,side2];
-            
-
-
         }
 
     </script>
