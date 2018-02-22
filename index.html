@@ -75,17 +75,32 @@
 
 
         function result(){
-            var resultText ="" ;
-            // var side1 = parseInt($('#side1').val()) s;
-            // var side2 = parseInt($('#side2').val()) ;
-            // var side3 = parseInt($('#side3').val()) ;
+            var result ="" ;
             var side1 = $('#side1').val() ;
             var side2 = $('#side2').val() ;
             var type = $('#triType').val() ;
             // console.log(type);
-            displayResult(type);    
-            $("#resultText").val(resultText);
-            var sides  = [side1,side2];
+            if(type == 0)
+            {
+                result = rightTriangle(side1,side2)
+            }
+            else if(type == 1)
+            {
+                result = equilateralTriangle(side1,side2)
+            }
+            else if(type ==2)
+            {
+                result = isoscelesTriangle(side1,side2)
+            }
+            else if(type ==3)
+            {
+                result =  scaleneTriangle(side1,side2)
+            }
+
+
+
+            displayResult(result);    
+            
         }
 
        
